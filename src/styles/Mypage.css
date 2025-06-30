@@ -1,0 +1,586 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mypageFrame {
+  display: flex;
+  flex-direction: column;
+  height: 155vh;
+  overflow: hidden;
+}
+
+.mypageTitle {
+  width: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 30px;
+  margin-left: 13.3%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.mypageFormCt {
+  display: flex;
+  justify-content: center;
+}
+
+.mypageForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 750px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.mypageInfo, .mypageInfo2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mypageInfo2 {
+  display: flex;
+  gap: 3px;
+}
+
+.genderImg {
+  width: 240px;
+  height: 240px;
+}
+
+.infoFrame {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5%;
+}
+
+.infoName {
+  display: flex;
+  width: 70px;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.nameLl {
+  font-size: 15px;
+  color: #999;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.infoMainFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 650px;
+  height: 200px;
+  gap: 25px;
+  background-color: #f7f7f7;
+  margin-top: 3%;
+  padding-left: 2%;
+}
+
+.infoMainLine {
+  width: 160px;
+  height: 1px;
+  background-color: #888;
+  transform: rotate(-90deg);
+}
+
+.RateMainFrame, .keyWordMainFrame {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.RateMainText, .keyWordMainText {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.infoGenderM,
+.infoGenderWm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.infoGenderM {
+  background-color: #e8f5ff;
+}
+
+.infoGenderWm {
+  background-color: #ffecf5;
+}
+
+.infoDate {
+  font-size: 15px;
+  font-weight: 600;
+  color: #999;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.mypageBtn {
+  display: flex;
+  align-content: center;
+  gap: 20px;
+  margin-top: 2%;
+}
+
+.target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 130px;
+  height: 130px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;  
+}
+
+.targetImg {
+  width: 70px;
+  height: 70px;
+}
+
+.infoEdit {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 0.5%;
+  color: #aaa;
+  background-color: transparent;
+  border: none;
+  gap: 8px;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.infoTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4%;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 55px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.formLine {
+  margin: 0 auto;
+  margin-top: 1%;
+  border: 0.5px solid #000;
+  width: 650px;
+}
+
+.formName {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelName {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 2%;
+  width: 140px;
+  height: 80px;
+  border-left: none;
+  background-color: #c4e5f2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputNameCt {
+  display: flex;
+  align-items: center;
+}
+
+.inputName, .inputName2 {
+  width: 320px;
+  height: 50px;
+  padding: 15px 9px;
+  margin-left: 7%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputName2 {
+  color: #999;
+}
+
+.formGender {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelGender {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 2%;
+  width: 140px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  background-color: #c4e5f2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputGenderCt {
+  display: flex;
+  align-items: center;
+}
+
+.inputGender, .inputGender2 {
+  width: 320px;
+  height: 50px;
+  padding: 15px 10px;
+  margin-left: 7%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputGender2 {
+  color: #999;
+}
+
+.selectGender {
+  width: 320px;
+  height: 50px;
+  padding-left: 4%;
+  margin-left: 7%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  color: #000;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.formDate {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelDate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 2%;
+  width: 140px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #c4e5f2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputDateCt {
+  display: flex;
+  align-items: center;
+}
+
+.inputDate, .inputDate2 {
+  width: 320px;
+  height: 50px;
+  padding: 15px 9px;
+  padding-left: 4%;
+  margin-left: 7%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputDate2 {
+  color: #999;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logup-text2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #999;
+  margin-bottom: 3%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.formEmail {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelEmail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 2%;
+  width: 140px;
+  height: 80px;
+  border-left: none;
+  background-color: #c4e5f2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputEmailCt {
+  display: flex;
+  align-items: center;
+}
+
+.emailText {
+  width: 270px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.emailCodeSubmit {
+  display: block;
+  width: 100px;
+  height: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #1e6fd9;
+  background-color: #fff;
+  margin-right: 1%;
+}
+
+.inputEmail {
+  width: 320px;
+  height: 50px;
+  padding-left: 4%;
+  margin-left: 7%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.formPassword {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 110px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelPassword  {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  width: 140px;
+  height: 110px;
+  padding-left: 2%;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  background-color: #c4e5f2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputPasswordCt {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5%;
+}
+
+.passwordTogle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 3%;
+} 
+
+.inputPassword {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 50px;
+  margin-left: 7.5%;
+  padding-left: 3%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputPassword2 {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  height: 50px;
+  margin-left: 4%;
+  padding-left: 3%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.passwordTextCt  {
+  font-size: 10px;
+  margin-left: 8%;
+  margin-top: 2%;
+  color: #aaa;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.passwordText {
+  letter-spacing: 0.5px;
+}
+
+.formPasswordCheck {
+  display: flex;
+  background-color: #fff;
+  width: 650px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.labelPasswordCheck {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 2%;
+  width: 140px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  background-color: #C4E5F2;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputPasswordCheckCt {
+  display: flex;
+  align-items: center;
+}
+
+.inputPasswordCheck {
+  width: 330px;
+  height: 50px;
+  padding-left: 4%;
+  margin-left: 7.5%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inputPasswordCheck2{
+  width: 320px;
+  height: 50px;
+  padding-left: 4%;
+  margin-left: 4%;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.button-group2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  gap: 30px;
+  margin-top: 3%;
+}
+
+.button, .submit {
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.button {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #1E6FD9;
+}
+
+.submit {
+  color: #fff;
+  background-color: #1E6FD9;
+  border: 1px solid #1E6FD9;
+}
+
+.errorMessage {
+  
+}

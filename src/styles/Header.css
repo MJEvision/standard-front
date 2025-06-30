@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.nav-wrapper {
+  border-bottom: 0.5px solid #ddd;
+  width: 100%;
+  background-color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 80px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 60px;
+  height: 50px;
+}
+
+.logo-text {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 19px;
+  color: #3587ff;
+  padding-left: 10px;
+  padding-top: 5px;
+  letter-spacing: -1px;
+}
+
+.nav-center {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-text {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.LogoutCt {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoutText {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.navRightCt {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-RightText {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* 공통 클래스들 */
+.correction {
+  cursor: pointer;
+}
+
+.selectfc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 260px;
+  height: 60px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 2%;
+  color: black;
+  text-decoration: none;
+  font-weight: 400;
+  padding-left: 1%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.rightPrev2 {
+  padding-right: 3%;
+  font-size: 16px;
+  font-family: "Noto Sans KR", sans-serif;
+}

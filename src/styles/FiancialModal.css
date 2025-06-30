@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95); 
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.financeInputFrameCt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 1.5%;
+  min-height: 80vh; 
+  position: relative;
+  overflow: hidden;
+}
+
+.financeInputFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 35px;
+  max-width: 1500px;
+  margin: 0 auto;
+  height: 320px;
+  border-radius: 10px;
+  background-color: #E7EDF3;
+}
+
+.savingInputFrame, .bankSelectFrame, .localSelectFrame {
+  display: flex;
+  gap: 50px;
+  width: 1210px;
+  border-bottom: 1.3px dashed #ccc
+}
+
+.localSelectFrame {
+  border-bottom: none;
+}
+
+.savingInput, .fianceBtns, .bankSelect, .localSelect  {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 2.5%;
+}
+
+.localSelect {
+  gap: 35px;
+}
+
+.bankCheckBoxCt, .localCheckBoxCt {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bankCheckboxLabel, .localCheckboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+}
+
+.fianceBtns {
+  gap: 10px;
+}
+
+.bankSelect {
+  gap: 35px;
+}
+
+.savingTitle, .fianceBtnTitle, .bankTitle, .localTitle {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.fianceBtnTitle {
+  padding-top: 1%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.savingTextCt {
+  display: flex;
+  gap: 15px;
+}
+
+.savingText {
+  width: 300px;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: right;
+  padding-right: 1%;
+}
+
+.savingPhrase {
+  width: 10px;
+}
+
+.fianceBtnCt {
+  display: flex;
+  gap: 20px;
+}
+
+.fianceBtn {
+  width: 110px;
+  height: 35px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #034C8C;
+  border: #3587FF;
+  font-family: "Noto Sans KR", sans-serif;
+  cursor: pointer
+}
+
+.fianceBtn:hover,
+.fianceBtn.selected {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #000;
+}
+
+
+.bankSelect {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.compareBtns {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  gap: 30px;
+}
+
+.resetBtn {
+  width: 180px;
+  height: 60px;
+  border: solid 1px #1e6fd9;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #fff;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.compareBtn {
+  width: 180px;
+  height: 60px;
+  background-color: #1e6fd9;
+  border: solid 1px #1e6fd9;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.financeResultLine {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 5%;
+}
+
+.financeResultFrameCt {
+  display: flex;
+  flex-direction: column;
+  max-width: 1150px;
+  min-height: 79vh;;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.financeResultTextCt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 5.5%;
+}
+
+.financeResultText {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.financeResultText2 {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #777;
+}
+
+.financeResultList {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.financeResultItem {
+  border: 1px solid #999;
+  border-radius: 8px;
+  min-width: 425px;
+  width: 500px;
+  box-sizing: border-box;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.ResultTopItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.bankLogoImg, .defaultLogo {
+  width: 80px;
+  height: 80px;
+}
+
+.financeResultProductName {
+  font-size: 23px;
+  font-weight: 600;
+  color: #333;
+}
+
+.financeResultExplain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.financeResultInterestRate {
+  font-size: 25px;
+  font-weight: 700;
+  padding-top: 5%;
+  color: #007bff;
+}
+
+.financeResultReasonCt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #555;
+  font-size: 16px;
+}
+
+.financeResultLink {
+  color: #2B57A0;
+  text-decoration: underline;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  padding-top: 3%;
+}
+
+.financeLoaderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.03);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+

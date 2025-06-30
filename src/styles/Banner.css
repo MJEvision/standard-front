@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bannerFrame {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1300px;
+  height: 150px;
+  background-color: #f4f8ff;
+  margin: 0 auto;
+  margin-top: 1%;
+}
+
+.bannerTextCt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 3%;
+  gap: 10px;
+}
+
+.bannerText {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerText2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #999;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerImg {
+  width: 140px;
+  height: 140px;
+  margin-right: 10%;
+  margin-top: 1%;
+}

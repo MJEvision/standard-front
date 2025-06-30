@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.financePageFrame {
+  min-height: 105vh; 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.financeTitle {
+  font-size: 35px;
+  font-weight: 600;
+  padding-left: 16%;
+  margin-top: 2%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerFrame {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1150px;
+  height: 150px;
+  border-radius: 8px;
+  background-color: #f4f8ff;
+  margin: 0 auto;
+  margin-top: 2%   ;
+}
+
+.bannerTextCt {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 3%;
+  gap: 10px;
+}
+
+.bannerText {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerText2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #999;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerImg {
+  width: 140px;
+  height: 140px;
+  margin-right: 5%;
+  margin-top: 1%;
+}

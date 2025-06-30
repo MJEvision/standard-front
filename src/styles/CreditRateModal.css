@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95); 
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.creditRateFrame {
+  height: auto;
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: min-height 0.3s ease;
+}
+
+.creditBoxCt {
+  display: flex;
+  align-items: center;
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.creditBox {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 6%;
+  width: 750px;
+  height: auto;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.creditBoxTop {
+  display: flex;
+  height: 70px;
+  padding-top: 2.5%;
+  gap: 155px;
+}
+
+.creditTitleCt {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.creditTitle {
+  font-size: 21px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.creditExplain {
+  font-size: 15px;
+  font-weight: 500;
+  color: #aaa;
+  width: 325px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.creditNumberCt {
+  display: flex;
+  gap: 10px;
+}
+
+.creditNumberFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+  transition: all 0.3s ease;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.creditNumberFrame.active {
+  background-color: #1e6fd9;
+  color: #fff;
+  border-color: #1e6fd9;
+  transform: scale(1.2);
+}
+
+.creditBoxContent {
+  margin-top: 20px;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 30px;
+  margin-top: 1%;
+  width: 100%;
+}
+
+.mothsSelectCt, .crediFrequencyCt {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.crediFrequencyCt {
+  margin-top: 4%;
+}
+
+.monthsSelect {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #888;
+}
+
+.priceTextCt, .debtCt, .creditHistoryCt, .newCreditCt, .creditUtiliCt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 600px;
+  height: 50px;
+}
+
+.priceText, .debt, .creditHistory, .crediFrequency, .newCredit, .creditUtili {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.priceText::placeholder,
+.debt::placeholder,
+.creditHistory::placeholder,
+.crediFrequency::placeholder,
+.newCredit::placeholder,
+.creditUtili::placeholder {
+  color: #888;
+}
+
+.stipulateText {
+  font-size: 15px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.debtCt, .creditHistoryCt, .newCreditCt, .creditUtiliCt {
+  margin-top: 4%;
+}
+
+.stepContent label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.stepContent input,
+.stepContent select {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.prevLeft {
+  font-size: 28px;
+  color: #1e6fd9;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.prevRight {
+  font-size: 28px;
+  color: #1e6fd9;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Special Gothic Expanded One", sans-serif;
+}
+
+.prevLeft:hover,
+.prevRight:hover {
+  opacity: 0.7;
+}
+
+.creditRate-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 3%;
+}
+
+.creditRate-submit-btn,
+.creditRate-reset-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 180px;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #1e6fd9;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.creditRate-submit-btn {
+  background-color: #1e6fd9;
+  color: #fff;
+}
+
+.creditRate-reset-btn {
+  background-color: #fff;
+  color: #333;
+}
+
+.creditRateLine {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 5%;
+}
+
+.rateResultFrameCt {
+  width: 100%;
+  height: auto;
+  min-height: 700px;
+}
+
+.rateResultFrame {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 1150px;
+  height: auto;
+  min-height: 450px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  margin-top: 4%;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.userTextCt {
+  display: flex;
+  align-items: center;
+  padding-top: 3%;
+  padding-left: 4%;
+}
+
+.userText2 {
+  font-size: 38px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.rateResultText {
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-left: 1%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.rateHighlight {
+  color: #1e6fd9;
+}
+
+.rateCt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 3%;
+}
+
+.rateFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rateText {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.rateLowlight {
+  font-size: 18px;
+  color: #aaa;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.rateBar {
+  width: 150px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.rateReslutTextCt {
+  margin: 0 auto;
+  margin-top: 5%;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 30px;
+  width: 90%;
+  text-align: left;
+  color: #333;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.resultHighlight {
+  padding-left: 3px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.resultHighlight.grade3 {
+  color: #beec51;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}

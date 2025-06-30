@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Footer-wrapper {
+    border-top: 1.5px solid #000;
+    background-color: white;
+  }
+
+  .FooterFrame {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1170px;
+    margin: 0 auto;
+    height: 200px;
+}
+
+
+.FooterLeft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.FooterLink {
+    display: flex;
+    width: 100%;
+    gap: 45px;
+    margin-bottom: 4%;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.selectfc2 {
+    color: #111;
+    text-decoration: none; 
+}
+
+.FooterTextCt {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+    gap: 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 100%;
+}
+
+.FooterLine {
+    width: 10px;
+    height: 2px;
+    background-color: #999;
+    transform: rotate(90deg);
+}
+
+.FooterText, .FooterText2 {
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.FooterText2 {
+    width: 342px;
+}
+
+.privacyPolicyText {
+    color: #999;
+    font-weight: 500;
+    width: 100%;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.FooterRight {
+    display: flex;
+    align-items: center;
+}
+
+.FooterLogo {
+    width: 80px;
+}
+

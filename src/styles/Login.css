@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.LoginFrame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.LoginForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 700px;
+  height: 600px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.LoginTitle {
+  margin-right: auto;
+  padding-left: 10%;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.LoginInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 8%;
+}
+
+.InputEmail2, .InputPassword2 {
+  display: flex;
+  padding-left: 3%;
+  font-size: 15px;
+  font-weight: 400;
+  width: 550px;
+  height: 60px;
+  border: 1px solid #1E6FD9;
+  border-radius: 5px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.InputEmail2::placeholder, .InputPassword2::placeholder {
+  color: #aaa;
+}
+
+.LoginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px;
+  margin-top: 5%;
+  width: 350px;
+  height: 60px;
+  font-size: 21px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #1E6FD9;
+  border: 1px solid #1E6FD9;
+  border-radius: 5px;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.LoginButton:hover {
+  background-color: #0A58BF; 
+}
+
+.socialCt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80px;
+  margin-top: 5%;
+}
+
+.socialTop {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.socialLine {
+  width: 290px;
+  height: 0.5px;
+  background-color: #ddd;
+}
+
+.socialText {
+  font-size: 15px;
+  font-weight: 500;
+  color: #999;
+}
+
+.socialFrame {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 2%;
+}
+
+.googleCt, .kakaoCt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+}
+
+.googleImg, .kakaoImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.LogupTo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  padding-top: 3%;
+  padding-left: 5%;
+}
+
+.LogupToText {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #999;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.LogupToText2 {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px;
+  color: #1E6FD9;
+  text-decoration: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.LogupToText2:hover {
+  color: #0A58BF; 
+}
+
+.commentFrame {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 700px;
+  height: 100px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #000;
+  background-color: #C4E5F2;
+  margin-top: 2%;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.commentText {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.name {
+  padding: 5px;
+  color: #4a6ee0;
+  font-size: 20px;
+  font-family: "Special Gothic Expanded One", sans-serif;
+}
