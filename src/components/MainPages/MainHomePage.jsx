@@ -9,7 +9,7 @@ import homeIcon from "@/assets/homeIcon.png";
 import welfareIcon from "@/assets/welfareIcon.png";
 import jobIcon from "@/assets/jobIcon.png";
 import educateIcon from "@/assets/educateIcon.png";
-import "@/styles/mainHomePage.css";
+import "@/styles/MainHomePage.css";
 
 const MainHomePage = () => {
   const [zoom] = useState(0.9);
