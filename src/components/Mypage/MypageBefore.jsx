@@ -6,7 +6,16 @@ import "@/styles/Mypage.css";
 import man from "@/assets/man.png";
 import woman from "@/assets/woman.png";
 import { useAuth } from "@/context/AuthContext";
-import { getUserInfo } from "@/api/Register";
+import { getUserInfo } from "@/api";
+
+
+const gradeColors = {
+  1: "#92dcff",
+  2: "#76e3c8",
+  3: "#beec51",
+  4: "#ffb762",
+  5: "#ffa2a2",
+};
 
 const MypageBefore = () => {
   const navigate = useNavigate();
@@ -23,6 +32,8 @@ const MypageBefore = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [creditGrade, setCreditGrade] = useState(null);
+  const [policyKeywords, setPolicyKeywords] = useState([]);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -30,9 +41,7 @@ const MypageBefore = () => {
       const userId = localStorage.getItem("userId");
 
       if (!isLoggedIn || !token || !userId) {
-        setError(
-          "소셜로그인 정보는 현재 구현되지 않았습니다. 일반 로그인 부탁드립니다."
-        );
+        setError("로그인 정보가 없습니다. 다시 로그인해주세요.");
         setIsLoading(false);
         setIsLoggedIn(false);
         localStorage.removeItem("accessToken");
@@ -48,13 +57,15 @@ const MypageBefore = () => {
         const response = await getUserInfo(userId);
 
         if (response && response.data) {
+          const data = response.data;
+
           const updatedForm = {
-            name: localStorage.getItem("name") || response.data.username || "",
+            name: localStorage.getItem("name") || data.username || "",
             gender:
               localStorage.getItem("gender") ||
-              (response.data.sex === "male" ? "남성" : "여성"),
-            birth: localStorage.getItem("birth") || response.data.birth || "",
-            email: localStorage.getItem("email") || response.data.email || "",
+              (data.sex === "male" ? "남성" : "여성"),
+            birth: localStorage.getItem("birth") || data.birth || "",
+            email: localStorage.getItem("email") || data.email || "",
             password: localStorage.getItem("password") || "",
             confirmPassword: localStorage.getItem("confirmPassword") || "",
           };
@@ -75,13 +86,9 @@ const MypageBefore = () => {
           localStorage.removeItem("userId");
           localStorage.removeItem("isLoggedIn");
           navigate("/login");
-        } else if (err.response.status >= 500) {
-          setError("서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
-        } else if (err.response.status >= 400) {
+        } else {
           setError(
-            `요청이 실패했습니다: ${
-              err.response.data?.message || "잘못된 요청입니다."
-            }`
+            `요청 실패: ${err.response.data?.message || "잘못된 요청입니다."}`
           );
         }
       } finally {
@@ -89,27 +96,56 @@ const MypageBefore = () => {
       }
     };
 
+    const storedGrade = localStorage.getItem("creditGrade");
+    const storedKeywords = localStorage.getItem("policyKeywords");
+
+    if (storedGrade !== null && storedGrade !== "null") {
+      setCreditGrade(storedGrade);
+    } else {
+      setCreditGrade(null);
+    }
+
+    if (storedKeywords) {
+      try {
+        const parsedKeywords = JSON.parse(storedKeywords);
+        if (Array.isArray(parsedKeywords)) {
+          setPolicyKeywords(parsedKeywords);
+        } else {
+          setPolicyKeywords([]);
+        }
+      } catch {
+        setPolicyKeywords([]);
+      }
+    } else {
+      setPolicyKeywords([]);
+    }
+
     fetchUserInfo();
   }, [isLoggedIn, setIsLoggedIn, navigate]);
+
+  useEffect(() => {
+    localStorage.setItem('creditGrade', '2');
+    localStorage.setItem('policyKeywords', JSON.stringify(['일자리']));
+  }, []);
+
 
   const handleEditClick = () => {
     navigate("/MyPageInit", { state: { userInfo: form } });
   };
 
+  const handleKeywordClick = (keyword) => {
+    navigate(`/supportPolicy?searchTerm=${encodeURIComponent(keyword)}`);
+  };
+
   return (
-    <div className="mypageFrame">
+    <div className="mypageBeforeFrame">
       <div className="mypageTitle">마이페이지</div>
       <div className="mypageFormCt">
         <div className="mypageForm">
           {isLoading ? (
             <div className="loadingMessage">정보를 불러오는 중입니다...</div>
           ) : error ? (
-            <div className="errorMessage" style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto",
-            }}>{error}</div> 
+            <div className="errorMessage">{error}</div>
           ) : (
             <>
               <div className="mypageInfo2">
@@ -129,12 +165,69 @@ const MypageBefore = () => {
               <div className="infoMainFrame">
                 <div className="RateMainFrame">
                   <div className="RateMainText">현재 신용등급 점수</div>
-                  <div className="RateResult"></div>
+                  <div className="RateResultFrameCt">
+                    {creditGrade ? (
+                      <div
+                        className="rateReslutText"
+                        style={{
+                          color:
+                            creditGrade in gradeColors
+                              ? gradeColors[creditGrade]
+                              : "#ffa2a2",
+                        }}
+                      >
+                        <div className="rateResultMain">
+                        {creditGrade === "데이터 없음"
+                          ? "알 수 없음"
+                          : `${creditGrade}등급`}
+                          </div>
+                        <div
+                          style={{ cursor: "pointer", color: "#007bff" }}
+                          onClick={() => navigate("/creditPolicy")}
+                        >
+                          다시 등급 계산 하러 가기
+                        </div>
+                      </div>
+                    ) : (
+                      <div
+                        className="rateReslutText"
+                        style={{ cursor: "pointer", color: "#007bff" }}
+                        onClick={() => navigate("/creditPolicy")}
+                      >
+                        등급 계산 하러 가기
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="infoMainLine"></div>
                 <div className="keyWordMainFrame">
                   <div className="keyWordMainText">현재 정책 추천 키워드</div>
-                  <div className="keywordResult"></div>
+                  <div className="keywordResult">
+                    {policyKeywords.length > 0 ? (
+                      policyKeywords.map((keyword) => (
+                        <button
+                          key={keyword}
+                          className="policyTag2"
+                          onClick={() => handleKeywordClick(keyword)}
+                          onKeyDown={(e) =>
+                            (e.key === "Enter" || e.key === " ") &&
+                            handleKeywordClick(keyword)
+                          }
+                          role="button"
+                          tabIndex={0}
+                        >
+                          #{keyword}
+                        </button>
+                      ))
+                    ) : (
+                      <p
+                        style={{ cursor: "pointer", color: "#007bff" }}
+                        onClick={() => navigate("/ChatbotPage")}
+                      >
+                        키워드 찾아보기
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -193,38 +286,6 @@ const MypageBefore = () => {
                     className="inputEmail"
                     type="email"
                     value={form.email}
-                    readOnly
-                  />
-                </div>
-              </div>
-
-              <div className="formPassword">
-                <div className="labelPassword">비밀번호</div>
-                <div className="inputPasswordCt">
-                  <input
-                    className="inputPassword"
-                    type="password"
-                    value={form.password}
-                    readOnly
-                  />
-                  <div className="passwordTextCt">
-                    <div className="passwordText">
-                      입력가능 특수문자: !@#$%^&*
-                    </div>
-                    <div className="passwordText2">
-                      (비밀번호는 9~16자리, 영문자·숫자·특수문자 포함 필수)
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="formPasswordCheck">
-                <div className="labelPasswordCheck">비밀번호 확인</div>
-                <div className="inputPasswordCheckCt">
-                  <input
-                    className="inputPasswordCheck"
-                    type="password"
-                    value={form.confirmPassword}
                     readOnly
                   />
                 </div>

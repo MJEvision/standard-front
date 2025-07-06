@@ -21,11 +21,9 @@ const ProtectedRoute = ({ element }) => {
         "from:",
         location.pathname
       );
-      // Use a flag in sessionStorage to prevent multiple alerts
       if (!sessionStorage.getItem("alertShown")) {
         alert("로그인 후 이용해주세요.");
         sessionStorage.setItem("alertShown", "true");
-        // Reset the flag after navigation to allow future alerts
         setTimeout(() => sessionStorage.removeItem("alertShown"), 1000);
       }
       navigate("/login", { state: { from: location.pathname }, replace: true });

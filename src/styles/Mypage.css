@@ -6,11 +6,15 @@
   box-sizing: border-box;
 }
 
-.mypageFrame {
+.mypageFrameInit, .mypageBeforeFrame {
   display: flex;
   flex-direction: column;
   height: 155vh;
   overflow: hidden;
+}
+
+.mypageBeforeFrame {
+  height: 145vh;
 }
 
 .mypageTitle {
@@ -84,7 +88,6 @@
   gap: 25px;
   background-color: #f7f7f7;
   margin-top: 3%;
-  padding-left: 2%;
 }
 
 .infoMainLine {
@@ -96,6 +99,7 @@
 
 .RateMainFrame, .keyWordMainFrame {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 15px;
 }
@@ -104,6 +108,10 @@
   font-size: 16px;
   font-weight: 500;
   font-family: "Noto Sans KR", sans-serif;
+}
+
+.RateMainText {
+  padding-left: 3%;
 }
 
 .infoGenderM,
@@ -581,6 +589,23 @@
   border: 1px solid #1E6FD9;
 }
 
-.errorMessage {
-  
+.policyTag2 {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 15px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 13%;
+}
+
+
+.policyTag:hover {
+  background-color: #e0e0e0;
+}
+
+.rateResultMain {
+  padding-left: 20%;
+  font-size: 30px;
+  padding-bottom: 5%;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import '@/styles/FormEmailCode.css';
+import api from "@/api";
 
 const FormEmailCode = ({ email, emailCode, onChange, isEmailSent, isEmailVerified, setIsEmailVerified }) => {
     const handleVerifyCode = async () => {
@@ -10,7 +10,7 @@ const FormEmailCode = ({ email, emailCode, onChange, isEmailSent, isEmailVerifie
         }
 
         try {
-            const response = await axios.post("http://localhost:3000/email-verification/verify", {
+            const response = await api.post("/email-verification/verify", {
                 email: email,
                 code: emailCode,
             });

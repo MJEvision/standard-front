@@ -5,9 +5,9 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import { useAuth } from "@/context/AuthContext";
 import Loading from "./Loading";
+import { rateResult } from "@/api/Ai";
 
 const CreditRateModal = () => {
   const { user } = useAuth();
@@ -94,7 +94,9 @@ const CreditRateModal = () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/getGrade", form);
+      setIsLoading(true);
+
+      const response = await rateResult(form);
       console.log("API 응답:", JSON.stringify(response.data, null, 2));
 
       const data = Array.isArray(response.data)

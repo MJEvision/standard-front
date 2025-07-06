@@ -1,13 +1,10 @@
-// src/Logup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Logup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import FormEmail from "../components/Register/FormEmail";
-import FormEmailCode from "../components/Register/FormEmailCode";
-import { register } from "../api/Register";
-import { useAuth } from "../context/AuthContext";
+import { register } from "@/api";
+import { FormEmail, FormEmailCode } from "../../allFiles";
 
 const Logup = () => {
   const [form, setForm] = useState({
@@ -25,7 +22,6 @@ const Logup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [zoom] = useState(0.9);
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -137,7 +133,7 @@ const Logup = () => {
   };
 
   return (
-    <div className="logup-wrapper" style={{ zoom: zoom }}>
+    <div className="logup-wrapper" style={{ zoom }}>
       <div className="logup-container">
         <div className="LogupTextCt">
           <div className="logup-text">회원가입</div>

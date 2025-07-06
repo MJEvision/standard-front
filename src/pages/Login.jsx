@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "@/styles/Login.css";
-import { login, getGoogleCallback, getKakaoCallback } from "@/api";
+import '@/styles/Login.css';
+import api, { login, getGoogleCallback, getKakaoCallback } from "@/api";
 import { useAuth } from "@/context/AuthContext";
 import google from "../assets/google.png";
 import kakao from "../assets/kakao.png";
+
 
 const Login = () => {
   const [formEmail, setFormEmail] = useState("");

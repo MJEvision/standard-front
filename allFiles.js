@@ -16,6 +16,8 @@ import GoogleCallback from "./src/pages/GoogleCallback.jsx";
 import KakaoCallback from "./src/pages/KakaoCallback.jsx";
 import NotFound from '@/components/Notfound.jsx';
 import InvestPage from '@/pages/InvestPage.jsx';
+import FormEmail from '@/components/Register/FormEmail.jsx';
+import FormEmailCode from '@/components/Register/FormEmailCode.jsx';
 
 export {
   KakaoCallback,
@@ -35,5 +37,7 @@ export {
   ChatbotPage,
   MypageInit,
   Loading,
-  NotFound
+  NotFound,
+  FormEmail,
+  FormEmailCode,
 };

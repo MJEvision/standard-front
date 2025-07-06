@@ -7,8 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "@/context/AuthContext";
 import { format } from "date-fns";
-import axios from "axios";
 import Loading from "./Loading";
+import { investRecommend } from "@/api/Ai";
 
 const InvestModal = () => {
   const { user } = useAuth();
@@ -141,7 +141,7 @@ const InvestModal = () => {
         payload,
       });
 
-      const response = await axios.post("http://localhost:8000/invRecom", payload);
+      const response = await investRecommend(payload);
 
       console.log("Full response:", response);
       console.log("Raw response data:", JSON.stringify(response.data, null, 2));

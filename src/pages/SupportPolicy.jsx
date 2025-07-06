@@ -10,6 +10,7 @@ import {
 import sanitizeHtml from "sanitize-html";
 import bannerImg from "@/assets/bannerImg.png";
 import "../styles/SupportPolicy.css";
+import { getKeywords } from "@/api/Ai";
 
 const isValidUrl = (url) => {
   try {
@@ -69,9 +70,7 @@ const SupportPolicy = () => {
   const fetchKeywords = useCallback(async () => {
     try {
       setIsLoadingKeywords(true);
-      const res = await axios.get("http://localhost:8000/key", {
-        headers: { accept: "application/json" },
-      });
+      const res = await getKeywords();
       const unique = [...new Set(res.data.filter(Boolean))];
       setKeywords(unique);
       setKeywordError(null);

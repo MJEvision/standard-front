@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { fetchChatHistory, askChatbot } from '../api/Chatbot';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import chatbot from '../assets/chatbot.png';
-import '../styles/ChatbotPage.css';
+import React, { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import chatbot from "../assets/chatbot.png";
+import "../styles/ChatbotPage.css";
+import { sendChatMessage, getChatHistory } from "@/api/Ai";
 
 const ChatbotPage = () => {
   const [messages, setMessages] = useState([]);
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
 
@@ -17,15 +17,15 @@ const ChatbotPage = () => {
   useEffect(() => {
     const loadChatHistory = async () => {
       try {
-        const res = await fetchChatHistory();
+        const res = await getChatHistory();
         const formatted = res.data.map((msg) => ({
-          sender: msg.role === 'user' ? '나' : '챗봇',
+          sender: msg.role === "user" ? "나" : "챗봇",
           message: msg.content,
         }));
         if (formatted.length > 0) setHasInteracted(true);
         setMessages(formatted);
       } catch (err) {
-        console.error('기록 불러오기 실패:', err);
+        console.error("기록 불러오기 실패:", err);
       }
     };
 
@@ -35,78 +35,85 @@ const ChatbotPage = () => {
   useEffect(() => {
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = 'auto';
+      textarea.style.height = "auto";
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, [userInput]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, loading]);
 
   const addMessage = (sender, message) => {
     setMessages((prev) => [...prev, { sender, message }]);
+
   };
 
   const handleSendMessage = async () => {
     const message = userInput.trim();
     if (!message || loading) return;
 
-    console.log('Submitting message:', message);
+    console.log("Submitting message:", message);
     if (!hasInteracted) setHasInteracted(true);
 
-    addMessage('나', message);
-    setUserInput(''); // Clear state
+    addMessage("나", message);
+    setUserInput("");
     if (textareaRef.current) {
-      textareaRef.current.value = ''; // Force clear DOM
+      textareaRef.current.value = ""; 
     }
     setLoading(true);
 
     try {
-      const res = await askChatbot(message);
-      const aiResponse = res.data.response || '응답 없음';
-      addMessage('챗봇', aiResponse);
+      const res = await sendChatMessage(message);
+      const aiResponse = res.data.response || "응답 없음";
+      addMessage("챗봇", aiResponse);
     } catch (error) {
-      console.error('오류 발생:', error.message);
-      addMessage('챗봇', `오류: ${error.message}`);
+      console.error("오류 발생:", error.message);
+      addMessage("챗봇", `오류: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
       e.preventDefault();
-      console.log('Enter pressed, submitting:', userInput);
+      console.log("Enter pressed, submitting:", userInput);
       handleSendMessage();
     }
   };
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
-    console.log('Current input:', e.target.value);
+    console.log("Current input:", e.target.value);
   };
 
   return (
-    <div id="ChatbotPage" style={{ padding: '1rem' }}>
+    <div id="ChatbotPage" style={{ padding: "1rem" }}>
       {!hasInteracted && (
         <div className="chatbotPhraseCt">
           <img className="chatbotImg" src={chatbot} alt="chatbotImg" />
           <div className="chatbotFrame">
             <div className="chatbotPhrase">
-              안녕하세요 저는 당신의 재정관리를 도와 줄 <span className="phraseHighlight">챗봇 FM</span>입니다!
+              안녕하세요 저는 당신의 재정관리를 도와 줄{" "}
+              <span className="phraseHighlight">챗봇 FM</span>입니다!
             </div>
-            <div className="chatbotPhrase2">재정관리에 대해 궁금한 내용을 질문해주세요</div>
+            <div className="chatbotPhrase2">
+              재정관리에 대해 궁금한 내용을 질문해주세요
+            </div>
           </div>
         </div>
       )}
 
       <div className="chatMessages">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`chatMessage ${msg.sender === '나' ? 'user' : 'ai'}`}>
-            {msg.sender !== '나' && (
+          <div
+            key={idx}
+            className={`chatMessage ${msg.sender === "나" ? "user" : "ai"}`}
+          >
+            {msg.sender !== "나" && (
               <img className="chatbotMsgImg2" src={chatbot} alt="chatbot" />
             )}
             <div className="bubble">{msg.message}</div>

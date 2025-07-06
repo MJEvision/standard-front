@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/FiancialModal.css";
-import axios from "axios";
-import Loading from "./Loading";
 import kakaoBank from "@/assets/kakaoBank.png";
 import shinhan from "@/assets/shinhan.png";
 import kb from "@/assets/kb.png";
@@ -10,6 +8,8 @@ import hana from "@/assets/hana.png";
 import nonghyup from "@/assets/nonghyup.png";
 import toss from "@/assets/toss.png";
 import defaultLogo from "@/assets/default.png"; 
+import { fiancialResult } from "@/api/Ai";
+import Loading from "./Loading";
 
 const Banks = [
   "신한은행",
@@ -113,7 +113,6 @@ const FiancialModal = () => {
   };
 
   const handleSubmit = async () => {
-    // Validation checks in order
     if (!price) {
       alert("저축 금액을 입력해주세요.");
       return;
@@ -144,10 +143,7 @@ const FiancialModal = () => {
         payload,
       });
 
-      const response = await axios.post(
-        "http://localhost:8000/prodRecom",
-        payload
-      );
+      const response = await fiancialResult(payload);
 
       console.log("Raw response data:", JSON.stringify(response.data, null, 2));
 
