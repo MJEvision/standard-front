@@ -9,6 +9,8 @@ export const sendChatMessage = (message) =>
   AiApi.post('/ask', { question: message });
 export const rateResult = (form) =>
   AiApi.post('/getGrade', form);
+export const getCreditGrade = (userId) =>
+  AiApi.get(`/getGrade?userId=${userId}`);
 export const investRecommend = (payload) =>
   AiApi.post('/invRecom', payload);
 export const fiancialResult = (payload) =>

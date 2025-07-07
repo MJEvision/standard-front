@@ -207,7 +207,7 @@ const MypageBefore = () => {
                       policyKeywords.map((keyword) => (
                         <button
                           key={keyword}
-                          className="policyTag2"
+                          className="policyTag"
                           onClick={() => handleKeywordClick(keyword)}
                           onKeyDown={(e) =>
                             (e.key === "Enter" || e.key === " ") &&
@@ -290,6 +290,8 @@ const MypageBefore = () => {
                   />
                 </div>
               </div>
+
+            
             </>
           )}
         </div>
