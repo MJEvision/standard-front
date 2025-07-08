@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const AiApi = axios.create({
-  baseURL: import.meta.env.VITE_AI_API_URL || 'http://52.79.247.46',
+  baseURL: import.meta.env.VITE_AI_API_URL || 'https://standard-ai.kro.kr/',
 });
 
 export const getChatHistory = () => AiApi.get('/chat'); 
