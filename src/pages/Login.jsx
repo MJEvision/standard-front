@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import '@/styles/Login.css';
+import "@/styles/Login.css";
 import api, { login, getGoogleCallback, getKakaoCallback } from "@/api";
 import { useAuth } from "@/context/AuthContext";
 import google from "../assets/google.png";
 import kakao from "../assets/kakao.png";
-
 
 const Login = () => {
   const [formEmail, setFormEmail] = useState("");
@@ -192,22 +191,6 @@ const Login = () => {
               회원가입
             </a>{" "}
             바로가기
-          </div>
-        </div>
-
-        <div className="socialCt">
-          <div className="socialTop">
-            <div className="socialLine"></div>
-            <div className="socialText">간편 로그인</div>
-            <div className="socialLine"></div>
-          </div>
-          <div className="socialFrame">
-            <div className="googleCt" onClick={handleGoogleLogin}>
-              <img className="googleImg" src={google} alt="googleLogo" />
-            </div>
-            <div className="kakaoCt" onClick={handleKakaoLogin}>
-              <img className="kakaoImg" src={kakao} alt="kakaoLogo" />
-            </div>
           </div>
         </div>
       </form>

@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Mypage.css";
 import man from "../assets/man.png";
-import woman from "../assets/woman.png";
 import manShape from "../assets/manShape.png";
-import womanShape from "../assets/womanShape.png";
 
 const Mypage = () => {
   const [form, setForm] = useState({ gender: "", birth: "", password: "" });
@@ -18,7 +16,6 @@ const Mypage = () => {
   const [email, setEmail] = useState("");
   const onEmailChange = (e) => setEmail(e.target.value);
 
-  const [showPassword, setShowPassword] = useState(false);
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
