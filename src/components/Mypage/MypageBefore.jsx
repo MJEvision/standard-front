@@ -9,14 +9,6 @@ import { useAuth } from "@/context/AuthContext";
 import { getUserInfo } from "@/api";
 
 
-const gradeColors = {
-  1: "#92dcff",
-  2: "#76e3c8",
-  3: "#beec51",
-  4: "#ffb762",
-  5: "#ffa2a2",
-};
-
 const MypageBefore = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -32,8 +24,6 @@ const MypageBefore = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [creditGrade, setCreditGrade] = useState(null);
-  const [policyKeywords, setPolicyKeywords] = useState([]);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -96,47 +86,6 @@ const MypageBefore = () => {
       }
     };
 
-    const storedGrade = localStorage.getItem("creditGrade");
-    const storedKeywords = localStorage.getItem("policyKeywords");
-
-    if (storedGrade !== null && storedGrade !== "null") {
-      setCreditGrade(storedGrade);
-    } else {
-      setCreditGrade(null);
-    }
-
-    if (storedKeywords) {
-      try {
-        const parsedKeywords = JSON.parse(storedKeywords);
-        if (Array.isArray(parsedKeywords)) {
-          setPolicyKeywords(parsedKeywords);
-        } else {
-          setPolicyKeywords([]);
-        }
-      } catch {
-        setPolicyKeywords([]);
-      }
-    } else {
-      setPolicyKeywords([]);
-    }
-
-    fetchUserInfo();
-  }, [isLoggedIn, setIsLoggedIn, navigate]);
-
-  useEffect(() => {
-    localStorage.setItem('creditGrade', '2');
-    localStorage.setItem('policyKeywords', JSON.stringify(['일자리']));
-  }, []);
-
-
-  const handleEditClick = () => {
-    navigate("/MyPageInit", { state: { userInfo: form } });
-  };
-
-  const handleKeywordClick = (keyword) => {
-    navigate(`/supportPolicy?searchTerm=${encodeURIComponent(keyword)}`);
-  };
-
   return (
     <div className="mypageBeforeFrame">
       <div className="mypageTitle">마이페이지</div>
@@ -158,75 +107,6 @@ const MypageBefore = () => {
                   <div className="infoName">
                     {form.name || "이름 없음"}
                     <span className="nameLl"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="infoMainFrame">
-                <div className="RateMainFrame">
-                  <div className="RateMainText">현재 신용등급 점수</div>
-                  <div className="RateResultFrameCt">
-                    {creditGrade ? (
-                      <div
-                        className="rateReslutText"
-                        style={{
-                          color:
-                            creditGrade in gradeColors
-                              ? gradeColors[creditGrade]
-                              : "#ffa2a2",
-                        }}
-                      >
-                        <div className="rateResultMain">
-                        {creditGrade === "데이터 없음"
-                          ? "알 수 없음"
-                          : `${creditGrade}등급`}
-                          </div>
-                        <div
-                          style={{ cursor: "pointer", color: "#007bff" }}
-                          onClick={() => navigate("/creditPolicy")}
-                        >
-                          다시 등급 계산 하러 가기
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        className="rateReslutText"
-                        style={{ cursor: "pointer", color: "#007bff" }}
-                        onClick={() => navigate("/creditPolicy")}
-                      >
-                        등급 계산 하러 가기
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="infoMainLine"></div>
-                <div className="keyWordMainFrame">
-                  <div className="keyWordMainText">현재 정책 추천 키워드</div>
-                  <div className="keywordResult">
-                    {policyKeywords.length > 0 ? (
-                      policyKeywords.map((keyword) => (
-                        <button
-                          key={keyword}
-                          className="policyTag"
-                          onClick={() => handleKeywordClick(keyword)}
-                          onKeyDown={(e) =>
-                            (e.key === "Enter" || e.key === " ") &&
-                            handleKeywordClick(keyword)
-                          }
-                          role="button"
-                          tabIndex={0}
-                        >
-                          #{keyword}
-                        </button>
-                      ))
-                    ) : (
-                      <p
-                        style={{ cursor: "pointer", color: "#007bff" }}
-                        onClick={() => navigate("/ChatbotPage")}
-                      >
-                        키워드 찾아보기
-                      </p>
-                    )}
                   </div>
                 </div>
               </div>

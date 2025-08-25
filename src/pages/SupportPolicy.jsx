@@ -48,7 +48,7 @@ const SupportPolicy = () => {
   const [zoom] = useState(0.9);
 
   const categories = ["전체", "주거정책", "교육정책", "복지정책", "일자리정책"];
-  const API_KEY = import.meta.env.VITE_API_KEY || "your-api-key-here"; // .env에서 VITE_API_KEY 설정 필요
+  const API_KEY = import.meta.env.VITE_API_KEY || "your-api-key-here"; 
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -110,7 +110,7 @@ const SupportPolicy = () => {
           {
             params,
             headers,
-            timeout: 10000, // 10초 타임아웃
+            timeout: 10000,
           }
         );
         console.log("Policies response:", res.data);

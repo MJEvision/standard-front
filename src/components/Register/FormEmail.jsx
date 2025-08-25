@@ -10,7 +10,7 @@ const FormEmail = ({ email, onChange, setIsEmailSent, isEmailVerified }) => {
     }
 
     try {
-      await api.post("/email-verification/send", { email }); 
+      await api.post('/email-verification/send?email=' + email);
       alert("인증코드가 발송되었습니다.");
       setIsEmailSent(true);
     } catch (error) {

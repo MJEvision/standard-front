@@ -3,10 +3,16 @@ import axios from 'axios';
 const api = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
   withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 const aiApi = axios.create({
   baseURL: import.meta.env.VITE_AI_API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 api.interceptors.request.use(
@@ -58,15 +64,21 @@ api.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem('refreshToken');
-        if (!refreshToken) throw new Error('리프레시 토큰 없음');
+        if (!refreshToken) throw new Error('Refresh 토큰 없음');
 
-        const response = await api.post('/auth/refresh', { refreshToken });
+        const response = await api.post(
+          '/auth/refresh',
+          JSON.stringify({ refreshToken }),
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
         const { accessToken } = response.data;
 
         if (accessToken) {
           localStorage.setItem('accessToken', accessToken);
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-          console.log('API: 토큰 갱신 성공, 재시도:', originalRequest.url);
+          console.log('API 토큰 갱신 성공: ', originalRequest.url);
           return api(originalRequest);
         }
       } catch (refreshError) {
@@ -87,22 +99,37 @@ api.interceptors.response.use(
   }
 );
 
-
 export const login = ({ email, password }) => {
   console.log('로그인 요청:', { email, password });
-  return api.post('/users/login', { email, password });
+  return api.post(
+    '/users/login',
+    JSON.stringify({ email, password }),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 };
 
 export const register = (userData) => {
-  return api.post('/users/register', userData);
+  return api.post(
+    '/users/register',
+    JSON.stringify(userData),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 };
 
 export const sendEmailVerification = (email) => {
-  return api.post('/email-verification/send', { email });
+  return api.post(
+    '/email-verification/send',
+    JSON.stringify({ email }),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 };
 
 export const verifyEmailCode = (email, code) => {
-  return api.post('/email-verification/verify', { email, code });
+  return api.post(
+    '/email-verification/verify',
+    JSON.stringify({ email, code }),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 };
 
 export const getUserInfo = (id) => {
@@ -110,7 +137,11 @@ export const getUserInfo = (id) => {
 };
 
 export const updateUserInfo = (id, updateData) => {
-  return api.patch(`/users/${id}`, updateData);
+  return api.patch(
+    `/users/${id}`,
+    JSON.stringify(updateData),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 };
 
 export const getGoogleCallback = (code) => {
@@ -127,7 +158,11 @@ export const getKakaoCallback = (code) => {
 
 export const chatWithAI = async (message) => {
   console.log('AI 요청:', message);
-  const response = await aiApi.post('/chat', { message });
+  const response = await aiApi.post(
+    '/chat',
+    JSON.stringify({ message }),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
   console.log('AI 응답:', response.data);
   return response;
 };

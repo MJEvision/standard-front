@@ -40,12 +40,12 @@ const InvestModal = () => {
       펀드: {
         keyword: data.fund_keyword,
         reason: data.fund_reason,
-        link: null, 
+        link: null,
       },
       주식: {
         keyword: data.stock_keyword,
         reason: data.stock_reason,
-        link: null, 
+        link: null,
       },
     };
 
@@ -60,7 +60,7 @@ const InvestModal = () => {
         ? item.link && item.link !== "#" && item.link.trim() !== ""
           ? `<a href="${item.link}" target="_blank" rel="noreferrer" class="investTextLink" aria-label="${category} 상품 페이지로 이동">상품 보러가기</a>`
           : "데이터 없음"
-        : ""; 
+        : "";
 
     return `${item.keyword || "데이터 없음"}\n${item.reason || "데이터 없음"}${
       linkText ? `\n${linkText}` : ""

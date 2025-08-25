@@ -125,7 +125,7 @@ const CreditRateModal = () => {
       };
       console.log("resultData 설정:", result);
       setResultData(result);
-      hasScrolled.current = false; // Reset scroll flag
+      hasScrolled.current = false;
     } catch (err) {
       console.error("서버 요청 실패:", err.message || err);
       alert("신용등급 조회에 실패했습니다. 서버를 확인해주세요.");
