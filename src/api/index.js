@@ -98,7 +98,7 @@
   };
 
   export const sendEmailVerification = (email) => {
-    return api.post('/email-verification/send', { email });
+    return api.post('/email-verification/send', { email }, { headers: { 'Content-Type': 'application/json' } });
   };
 
   export const verifyEmailCode = (email, code) => {
