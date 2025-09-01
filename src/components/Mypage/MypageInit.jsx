@@ -10,7 +10,8 @@ import { updateUserInfo } from "@/api";
 const MypageInit = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const userInfo = location.state?.userInfo;
+  const locationUserInfo = location.state?.userInfo;
+
   const [form, setForm] = useState({
     password: "",
     confirmPassword: "",
@@ -23,23 +24,28 @@ const MypageInit = () => {
   });
 
   useEffect(() => {
-    if (userInfo) {
-      const initialForm = {
+    const storedUser = locationUserInfo || JSON.parse(localStorage.getItem("userInfo"));
+
+    if (storedUser) {
+      setForm({
         password: localStorage.getItem("password") || "",
         confirmPassword: localStorage.getItem("confirmPassword") || "",
-      };
-      setForm(initialForm);
-      setDisplayInfo({
-        name: userInfo.name || userInfo.username || "",
-        gender: userInfo.gender || "",
-        birth: userInfo.birth || "",
       });
-      setEmail(userInfo.email || localStorage.getItem("email") || "");
+
+      setDisplayInfo({
+        name: storedUser.name || storedUser.username || "",
+        gender: storedUser.gender || "",
+        birth: storedUser.birth || "",
+      });
+
+      setEmail(storedUser.email || localStorage.getItem("email") || "");
+
+      localStorage.setItem("userInfo", JSON.stringify(storedUser));
     } else {
       alert("사용자 정보를 불러오지 못했습니다. 다시 시도해주세요.");
       navigate("/login");
     }
-  }, [userInfo, navigate]);
+  }, [locationUserInfo, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,8 +70,9 @@ const MypageInit = () => {
   };
 
   const isFormChanged = () => {
+    const storedUser = JSON.parse(localStorage.getItem("userInfo"));
     return (
-      email !== (userInfo?.email || localStorage.getItem("email")) ||
+      email !== (storedUser?.email || "") ||
       form.password !== localStorage.getItem("password") ||
       form.confirmPassword !== localStorage.getItem("confirmPassword")
     );
@@ -95,8 +102,14 @@ const MypageInit = () => {
       localStorage.setItem("password", form.password);
       localStorage.setItem("confirmPassword", form.confirmPassword);
 
+      const updatedUser = {
+        ...JSON.parse(localStorage.getItem("userInfo")),
+        email,
+      };
+      localStorage.setItem("userInfo", JSON.stringify(updatedUser));
+
       alert("정보가 수정되었습니다.");
-      navigate("/MyPageBefore");
+      navigate("/MypageBefore");
     } catch (err) {
       console.error(err);
       alert("회원정보 수정에 실패했습니다.");
@@ -110,7 +123,7 @@ const MypageInit = () => {
       );
       if (!confirmLeave) return;
     }
-    navigate("/MyPageBefore");
+    navigate("/MypageBefore");
   };
 
   return (
@@ -135,8 +148,7 @@ const MypageInit = () => {
           <div className="infoTitle">
             회원정보 수정
             <button className="infoEdit" onClick={handleBack}>
-              뒤로가기{" "}
-              <FontAwesomeIcon className="rightPrev" icon={faChevronRight} />
+              뒤로가기 <FontAwesomeIcon className="rightPrev" icon={faChevronRight} />
             </button>
           </div>
           <div className="formLine"></div>

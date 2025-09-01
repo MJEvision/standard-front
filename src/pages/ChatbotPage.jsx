@@ -7,9 +7,9 @@ import { sendChatMessage, getChatHistory } from "@/api/Ai";
 
 const ChatbotPage = () => {
   const [messages, setMessages] = useState([]);
-  const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [userInput, setUserInput] = useState(""); // ✅ 추가된 부분
 
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
@@ -32,23 +32,8 @@ const ChatbotPage = () => {
     loadChatHistory();
   }, []);
 
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-  }, [userInput]);
-
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages, loading]);
-
   const addMessage = (sender, message) => {
     setMessages((prev) => [...prev, { sender, message }]);
-
   };
 
   const handleSendMessage = async () => {
@@ -58,11 +43,9 @@ const ChatbotPage = () => {
     console.log("Submitting message:", message);
     if (!hasInteracted) setHasInteracted(true);
 
+    // 사용자 메시지 추가
     addMessage("나", message);
-    setUserInput("");
-    if (textareaRef.current) {
-      textareaRef.current.value = ""; 
-    }
+    setUserInput(""); // ✅ 입력창 비우기
     setLoading(true);
 
     try {
@@ -87,7 +70,6 @@ const ChatbotPage = () => {
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
-    console.log("Current input:", e.target.value);
   };
 
   return (

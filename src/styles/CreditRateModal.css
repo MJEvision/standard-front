@@ -148,7 +148,7 @@ input::-webkit-inner-spin-button {
   width: 100%;
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
-  color: #888;
+  color: #333;
 }
 
 .priceTextCt, .debtCt, .creditHistoryCt, .newCreditCt, .creditUtiliCt {
@@ -157,6 +157,7 @@ input::-webkit-inner-spin-button {
   gap: 10px;
   width: 600px;
   height: 50px;
+  color: #333
 }
 
 .priceText, .debt, .creditHistory, .crediFrequency, .newCredit, .creditUtili {
@@ -177,7 +178,7 @@ input::-webkit-inner-spin-button {
 .crediFrequency::placeholder,
 .newCredit::placeholder,
 .creditUtili::placeholder {
-  color: #888;
+  color: #333;
 }
 
 .stipulateText {

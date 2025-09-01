@@ -77,14 +77,18 @@ const MypageBefore = () => {
       }
     };
 
-    // 👇 여기서 꼭 실행해야 함
     fetchUserInfo();
   }, [isLoggedIn, navigate, setIsLoggedIn]);
 
-  // 👇 수정하기 버튼 핸들러 추가
-  const handleEditClick = () => {
-    navigate("/mypage/edit");
+const handleEditClick = () => {
+  const userInfo = {
+    name: form.name,
+    gender: form.gender,
+    birth: form.birth,
+    email: form.email,
   };
+  navigate("/mypageInit", { state: { userInfo } });
+};
 
   return (
     <div className="mypageBeforeFrame">

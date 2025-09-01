@@ -10,12 +10,16 @@ const FormEmail = ({ email, onChange, setIsEmailSent, isEmailVerified }) => {
     }
 
     try {
-      await api.post('/email-verification/send?email=' + email);
-      alert("인증코드가 발송되었습니다.");
+      await api.post(
+        '/email-verification/send',
+        { email },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      alert('인증코드가 발송되었습니다.');
       setIsEmailSent(true);
     } catch (error) {
-      console.error("인증코드 발송 오류:", error);
-      alert("오류가 발생했습니다. 다시 시도해주세요.");
+      console.error('인증코드 발송 오류:', error);
+      alert('오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
 
