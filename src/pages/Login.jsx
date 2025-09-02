@@ -187,7 +187,7 @@ const Login = () => {
         <div className="LogupTo">
           <div className="LogupToText">
             아직 회원가입 안 하셨나요?{" "}
-            <a className="LogupToText2" href="/Logup">
+            <a className="LogupToText2" href="/logup">
               회원가입
             </a>{" "}
             바로가기
