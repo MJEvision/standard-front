@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "@/styles/Login.css";
 import api, { login, getGoogleCallback, getKakaoCallback } from "@/api";
 import { useAuth } from "@/context/AuthContext";
@@ -187,9 +187,9 @@ const Login = () => {
         <div className="LogupTo">
           <div className="LogupToText">
             아직 회원가입 안 하셨나요?{" "}
-            <a className="LogupToText2" href="/logup">
+            <Link to="/logup" className="LogupToText2">
               회원가입
-            </a>{" "}
+            </Link>
             바로가기
           </div>
         </div>
