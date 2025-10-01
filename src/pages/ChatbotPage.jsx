@@ -9,7 +9,7 @@ const ChatbotPage = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [userInput, setUserInput] = useState(""); // ✅ 추가된 부분
+  const [userInput, setUserInput] = useState("");
 
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
@@ -18,10 +18,15 @@ const ChatbotPage = () => {
     const loadChatHistory = async () => {
       try {
         const res = await getChatHistory();
-        const formatted = res.data.map((msg) => ({
-          sender: msg.role === "user" ? "나" : "챗봇",
-          message: msg.content,
-        }));
+        console.log("getChatHistory response:", res); // 응답 확인
+
+        const formatted = Array.isArray(res?.data)
+          ? res.data.map((msg) => ({
+              sender: msg.role === "user" ? "나" : "챗봇",
+              message: msg.content,
+            }))
+          : [];
+
         if (formatted.length > 0) setHasInteracted(true);
         setMessages(formatted);
       } catch (err) {
@@ -40,17 +45,15 @@ const ChatbotPage = () => {
     const message = userInput.trim();
     if (!message || loading) return;
 
-    console.log("Submitting message:", message);
     if (!hasInteracted) setHasInteracted(true);
 
-    // 사용자 메시지 추가
     addMessage("나", message);
-    setUserInput(""); // ✅ 입력창 비우기
+    setUserInput("");
     setLoading(true);
 
     try {
       const res = await sendChatMessage(message);
-      const aiResponse = res.data.response || "응답 없음";
+      const aiResponse = res?.data?.response || "응답 없음";
       addMessage("챗봇", aiResponse);
     } catch (error) {
       console.error("오류 발생:", error.message);
@@ -63,7 +66,6 @@ const ChatbotPage = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
       e.preventDefault();
-      console.log("Enter pressed, submitting:", userInput);
       handleSendMessage();
     }
   };
@@ -71,6 +73,12 @@ const ChatbotPage = () => {
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, loading]);
 
   return (
     <div id="ChatbotPage" style={{ padding: "1rem" }}>
@@ -89,7 +97,10 @@ const ChatbotPage = () => {
         </div>
       )}
 
-      <div className="chatMessages">
+      <div
+        className="chatMessages"
+        style={{ overflowY: "auto", maxHeight: "70vh" }}
+      >
         {messages.map((msg, idx) => (
           <div
             key={idx}
@@ -101,11 +112,13 @@ const ChatbotPage = () => {
             <div className="bubble">{msg.message}</div>
           </div>
         ))}
+
         {loading && (
           <div className="chatMessage ai">
             <div className="bubble2">답변 생성 중...</div>
           </div>
         )}
+
         <div ref={messagesEndRef} />
       </div>
 
