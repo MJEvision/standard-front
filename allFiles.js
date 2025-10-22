@@ -3,7 +3,6 @@ import MainPage from './src/pages/MainPage.jsx';
 import Login from './src/pages/Login.jsx';
 import Logup from './src/pages/Logup.jsx';
 import { AuthProvider } from './src/context/AuthContext.jsx';
-import CreditPolicyPage from './src/pages/CreditRatePage.jsx';  
 import FinancialPage from './src/pages/FinancialPage.jsx'; 
 import Mypage from './src/pages/Mypage.jsx';
 import Footer from './src/components/Footer.jsx';
@@ -18,6 +17,8 @@ import NotFound from '@/components/Notfound.jsx';
 import InvestPage from '@/pages/InvestPage.jsx';
 import FormEmail from '@/components/Register/FormEmail.jsx';
 import FormEmailCode from '@/components/Register/FormEmailCode.jsx';
+import CreditRatePage from '@/pages/CreditRatePage.jsx';
+import CreditRateModal from '@/components/CreditRateModal.jsx';
 
 export {
   KakaoCallback,
@@ -28,7 +29,7 @@ export {
   Login,
   Logup,
   AuthProvider,
-  CreditPolicyPage,
+  CreditRatePage,
   InvestPage,
   FinancialPage,
   Mypage,
@@ -40,4 +41,5 @@ export {
   NotFound,
   FormEmail,
   FormEmailCode,
+  CreditRateModal,
 };

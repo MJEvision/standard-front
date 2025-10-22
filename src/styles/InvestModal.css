@@ -69,11 +69,13 @@
 }
 
 .investExplain {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: #9ca3af;
   width: 325px;
   font-family: "Noto Sans KR", sans-serif;
+  white-space: nowrap;
+  display: block; 
 }
 
 .investNumberCt {
@@ -148,7 +150,7 @@
   width: 100%;
   padding: 12px 16px;
   font-family: "Noto Sans KR", sans-serif;
-  color: #000;
+  color: #333;
   font-weight: 500;
 }
 
@@ -162,7 +164,7 @@
 .dateInput {
   background-color: #fff;
   border: 1px solid #ccc;
-  color: #000;
+  color: #333;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;

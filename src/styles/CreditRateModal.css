@@ -25,7 +25,7 @@ input::-webkit-inner-spin-button {
 
 .creditRateFrame {
   height: auto;
-  min-height: 80vh;
+  min-height: 120vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -77,8 +77,11 @@ input::-webkit-inner-spin-button {
   font-size: 15px;
   font-weight: 500;
   color: #aaa;
-  width: 325px;
+  width: 320px;
+  flex-wrap: nowrap;
   font-family: "Noto Sans KR", sans-serif;
+  white-space: nowrap;
+  display: block; 
 }
 
 .creditNumberCt {

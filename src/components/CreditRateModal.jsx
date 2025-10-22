@@ -175,7 +175,7 @@ const CreditRateModal = () => {
                 value={form.PH}
                 onChange={handleInputChange}
               >
-                <option value="">결제이력에 대한 개월을 선택해주세요</option>
+                <option  value="">결제이력에 대한 개월을 선택해주세요</option>
                 <option value="1">3개월 미만</option>
                 <option value="2">12개월 미만</option>
                 <option value="3">24개월 미만</option>
@@ -283,6 +283,15 @@ const CreditRateModal = () => {
     }
   };
 
+  const stepExplanations = {
+    1: "최근 결제이력과 결제 금액을 입력해주세요.",
+    2: "현재 보유 중인 총 부채 금액을 입력해주세요.",
+    3: "신용 거래를 유지해온 기간(신용이력 년수)을 입력해주세요.",
+    4: "지난 1년간의 신용거래(카드, 대출 등) 빈도를 입력해주세요.",
+    5: "최근 신규 신용거래(예: 신규 카드 발급, 대출 등) 횟수를 입력해주세요.",
+    6: "현재 신용 한도 대비 사용률(%)을 입력해주세요.",
+  };
+
   const stepTitles = {
     1: "결제이력",
     2: "부채금액",
@@ -318,9 +327,11 @@ const CreditRateModal = () => {
         <div className="creditBox">
           <div className="creditBoxTop">
             <div className="creditTitleCt">
-              <div className="creditTitle">{stepTitles[step]}</div>
+              <div className="creditTitle">
+                {stepTitles?.[step]}
+              </div>
               <div className="creditExplain">
-                신용등급 조회를 위해 6가지의 정보를 입력해주세요.
+                {stepExplanations?.[step]}
               </div>
             </div>
             <div className="creditNumberCt">

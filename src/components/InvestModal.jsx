@@ -213,6 +213,12 @@ const InvestModal = () => {
     3: "원금보장 여부",
   };
 
+  const stepExplanations = {
+    1: "예금 또는 투자 상품의 예상 이율(%)을 입력해주세요",
+    2: "투자를 진행할 기간을 설정해주세요 (시작일과 종료일 입력)",
+    3: "투자 원금이 보장되는 상품인지 선택해주세요. (보장 또는 비보장 선택)",
+  };
+
   useEffect(() => {
     if (resultData && resultRef.current && !hasScrolled.current) {
       resultRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -312,7 +318,7 @@ const InvestModal = () => {
             <div className="investTitleCt">
               <div className="investTitle2">{stepTitles[step]}</div>
               <div className="investExplain">
-                투자 추천을 위해 3가지 정보를 입력하세요.
+              {stepExplanations?.[step] ?? ""}
               </div>
             </div>
             <div className="investNumberCt">

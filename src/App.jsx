@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as R from "../allFiles";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 
 const AuthContext = React.createContext();
-
 export const useAuth = () => React.useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
@@ -36,30 +41,22 @@ const AuthProvider = ({ children }) => {
 
 const ProtectedRoute = ({ element }) => {
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
   const token = localStorage.getItem("accessToken");
 
-  useEffect(() => {
-    if (location.pathname.includes("/auth/")) return; // OAuth callback 제외
-
-    if (!isLoggedIn && !token) {
-      if (!sessionStorage.getItem("alertShown")) {
-        alert("로그인 후 이용해주세요.");
-        sessionStorage.setItem("alertShown", "true");
-        setTimeout(() => sessionStorage.removeItem("alertShown"), 1000);
-      }
-      navigate("/login", { state: { from: location.pathname }, replace: true });
+  if (!isLoggedIn && !token) {
+    if (!sessionStorage.getItem("alertShown")) {
+      alert("로그인 후 이용해주세요.");
+      sessionStorage.setItem("alertShown", "true");
+      setTimeout(() => sessionStorage.removeItem("alertShown"), 1000);
     }
-  }, [isLoggedIn, token, navigate, location.pathname]);
+    return <Navigate to="/login" replace />;
+  }
 
-  return isLoggedIn || token ? element : null;
+  return element;
 };
 
-// ----------------- App Component -----------------
 const App = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const hideFooterPaths = [
@@ -73,6 +70,7 @@ const App = () => {
     "/auth/google/callback",
     "/auth/kakao/callback",
   ];
+
   const shouldHideFooter = hideFooterPaths.includes(location.pathname);
 
   useEffect(() => {
@@ -92,9 +90,8 @@ const App = () => {
   );
 };
 
-// AppContent 컴포넌트에서만 useAuth 사용
 const AppContent = ({ shouldHideFooter, loading }) => {
-  const { isLoggedIn } = useAuth(); // 이제 AuthProvider 안이므로 undefined 아님
+  const { isLoggedIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -108,6 +105,7 @@ const AppContent = ({ shouldHideFooter, loading }) => {
     <>
       <R.Header />
       {loading && <R.Loading />}
+
       <Routes>
         <Route path="/" element={<R.MainPage />} />
         <Route path="/login" element={<R.Login />} />
@@ -115,9 +113,10 @@ const AppContent = ({ shouldHideFooter, loading }) => {
         <Route path="/supportPolicy" element={<R.SupportPolicy />} />
 
         <Route
-          path="/creditPolicy"
-          element={<ProtectedRoute element={<R.CreditPolicyPage />} />}
+          path="/creditRate"
+          element={<ProtectedRoute element={<R.CreditRatePage />} />}
         />
+
         <Route
           path="/investRecommend"
           element={<ProtectedRoute element={<R.InvestPage />} />}
@@ -143,12 +142,14 @@ const AppContent = ({ shouldHideFooter, loading }) => {
           element={<ProtectedRoute element={<R.MypageBefore />} />}
         />
 
+        {/* 콜백 경로 */}
         <Route path="/auth/google/callback" element={<R.GoogleCallback />} />
         <Route path="/auth/kakao/callback" element={<R.KakaoCallback />} />
 
         <Route path="/Loading" element={<R.Loading />} />
         <Route path="*" element={<R.NotFound />} />
       </Routes>
+
       {!shouldHideFooter && !loading && <R.Footer />}
     </>
   );

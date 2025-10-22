@@ -39,7 +39,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="correction">
-            <Link to="/creditPolicy" className="nav-text">
+            <Link to="/creditRate" className="nav-text">
               신용등급
             </Link>
           </div>

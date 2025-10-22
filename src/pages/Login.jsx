@@ -3,8 +3,8 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import "@/styles/Login.css";
 import api, { login, getGoogleCallback, getKakaoCallback } from "@/api";
 import { useAuth } from "@/context/AuthContext";
-import google from "../assets/google.png";
-import kakao from "../assets/kakao.png";
+// import google from "../assets/google.png";
+// import kakao from "../assets/kakao.png";
 
 const Login = () => {
   const [formEmail, setFormEmail] = useState("");

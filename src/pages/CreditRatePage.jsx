@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import CreditModal from '@/components/CreditRateModal';
 import '../styles/CreditRatePage.css';
 import bannerImg from '@/assets/bannerImg.png';
+import { CreditRateModal } from '../../allFiles';
 
 const CreditRatePage = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -39,7 +39,7 @@ const CreditRatePage = () => {
           </div>
           <img className="bannerImg" src={bannerImg} alt="배너 이미지" />
         </div>
-        <CreditModal />
+        <CreditRateModal />
       </div>
       {showScrollButton && (
         <button className="scrollToTop" onClick={scrollToTop}>
